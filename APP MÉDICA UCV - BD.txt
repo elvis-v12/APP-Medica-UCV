@@ -11,6 +11,10 @@ CREATE TABLE IF NOT EXISTS roles (
     PRIMARY KEY (id_rol)
 );
 
+-- Insertar roles básicos
+INSERT INTO roles (nombre) VALUES ('Estudiante');
+INSERT INTO roles (nombre) VALUES ('Administrador');
+
 -- Tabla tipoacceso
 CREATE TABLE IF NOT EXISTS tipoacceso (
     id_tipo INT(11) NOT NULL AUTO_INCREMENT,
