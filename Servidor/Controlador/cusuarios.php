@@ -5,7 +5,8 @@ include "../../Cliente/Modelo/conexion.php";
 try {
     // Obtener el ID del usuario de la sesión
     if (!isset($_SESSION['usuario_id'])) {
-        echo "Usuario no autenticado";
+        http_response_code(401); // Código de no autorizado
+        echo json_encode(['error' => 'Usuario no autenticado']);
         exit;
     }
     $id_usuario = $_SESSION['usuario_id'];
