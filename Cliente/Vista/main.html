@@ -18,37 +18,43 @@
             </div>
         </div>
         <nav class="navegacion">
-            <ul>
-                <li>
-                    <a id="alerta" href="main.html">
-                        <span>Alerta Médica</span>
-                    </a>
-                </li>
-                <li>
-                    <a id="perfil" href="perfil.html">
-                        <span>Perfil</span>
-                    </a>
-                </li>
-                <li class="sidebar-item dropend">
-                    <a class="sidebar-link dropdown-toggle" href="#" role="button" id="registroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span>Registro de alertas</span>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="registroDropdown">
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" id="registro-emergencia" href="registro-emergencia.html">Registro de Emergencia</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" id="historial" href="historial.html">Historial</a>
-                        </li>
-                    </ul>
-                </li>
-                <div class="linea"></div>
-                <li>
+            <div class="arriba">
+                <ul>
+                    <li>
+                        <a id="alerta" href="main.html">
+                            <img src="img/alert-triangle-svgrepo-com.svg" alt="alerta">
+                            <span>Alerta Médica</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="perfil" href="perfil.html">
+                            <img src="img/user-svgrepo-com.svg" alt="perfil">
+                            <span>Perfil</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sidebar-item dropend">
+                        <a class="sidebar-link dropdown-toggle" href="#" role="button" id="registroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="img/folder-svgrepo-com.svg" alt="registro">
+                            <span>Registro de alertas</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="registroDropdown">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" id="registro-emergencia" href="registro-emergencia.html">Registro de Emergencia</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" id="historial" href="historial.html">Historial</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="abajo">
                     <a href="../Controlador/cerrarSesion.php">
+                        <img src="img/logout-svgrepo-com.svg" alt="salir">
                         <span>Cerrar Sesión</span>
                     </a>
-                </li>
-            </ul>
+            </div>
         </nav>
     </div>
     
