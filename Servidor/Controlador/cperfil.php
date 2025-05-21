@@ -102,7 +102,7 @@ try {
             echo json_encode(['error' => 'Usuario no encontrado']);
             exit;
         }
-
+        
         // Devolver los datos del usuario en formato JSON
         echo json_encode([
             'nombre' => $usuario['nombre'],
