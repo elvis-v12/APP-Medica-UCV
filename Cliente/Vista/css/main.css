@@ -160,11 +160,6 @@ ul {
   margin-right: 10px;
 }
 
-/* Enlace activo */
-#alerta {
-  background-color: var(--color-menu-hover);
-  color: var(--color-menu-hover-texto);
-}
 
 /* Dropdown */
 .sidebar-item .dropdown-toggle::after {
