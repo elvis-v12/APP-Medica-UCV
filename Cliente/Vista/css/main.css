@@ -238,35 +238,6 @@ main.min-main{
   margin-left: 80px;
 }
 
-
-/*Responsive*/
-@media (max-height: 660px){
-  .barra-lateral .nombre-pagina{
-    margin-bottom: 5px;
-  }
-}
-@media (max-width: 600px){
-  .barra-lateral{
-    position: fixed;
-    left: -250px;
-  }
-  .max-barra-lateral{
-    left: 0;
-  }
-  .menu{
-    display: flex;
-  }
-  .menu i:nth-child(2){
-    display: none;
-  }
-  main{
-    margin-left: 0;
-  }
-  main.min-main{
-    margin-left: 0;
-  }
-}
-
 form {
   background-color: #ffffff;
   padding: 30px;
@@ -328,4 +299,28 @@ form .col-md-6, form .col-12 {
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .barra-lateral {
+    left: -260px;
+  }
+
+  .max-barra-lateral {
+    left: 0;
+  }
+
+  .menu {
+    display: flex;
+  }
+
+  main {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  main.min-main {
+    margin-left: 0;
+  }
 }

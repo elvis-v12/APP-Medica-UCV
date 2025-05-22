@@ -329,31 +329,26 @@ h1 {
   cursor: pointer;
 }
 
-  
-/*Responsive*/
-@media (max-height: 660px){
-  .barra-lateral .nombre-pagina{
-    margin-bottom: 5px;
+/* Responsive */
+@media (max-width: 768px) {
+  .barra-lateral {
+    left: -260px;
   }
-}
-@media (max-width: 600px){
-  .barra-lateral{
-    position: fixed;
-    left: -250px;
-  }
-  .max-barra-lateral{
+
+  .max-barra-lateral {
     left: 0;
   }
-  .menu{
+
+  .menu {
     display: flex;
   }
-  .menu i:nth-child(2){
-    display: none;
-  }
-  main{
+
+  main {
     margin-left: 0;
+    padding: 20px;
   }
-  main.min-main{
+
+  main.min-main {
     margin-left: 0;
   }
 }
