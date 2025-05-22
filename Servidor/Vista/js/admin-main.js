@@ -4,6 +4,23 @@ const spans = document.querySelectorAll("span");
 const menu = document.querySelector(".menu");
 const main = document.querySelector("main");
 
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('../Controlador/cmain.php')
+        .then(response => response.text())
+        .then(text => {
+            if (text.includes("Usuario no autenticado")) {
+                throw new Error('Usuario no autenticado');
+            }
+            // Si necesitas usar los datos, parsea aquí el JSON si aplica
+            // const data = JSON.parse(text);
+        })
+        .catch(error => {
+            console.error('Error al cargar main:', error);
+            window.location.href = '../Controlador/cerrarSesion.php';
+        });
+});
+
+
 menu.addEventListener("click",()=>{
   barraLateral.classList.toggle("max-barra-lateral");
   if(barraLateral.classList.contains("max-barra-lateral")){
