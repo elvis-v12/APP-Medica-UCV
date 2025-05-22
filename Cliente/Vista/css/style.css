@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: rgba(45, 52, 87, 0.9);
+  background-image: url('../img/fondo.webp');
   background-size: cover;
   background-position: center;
 }
@@ -164,6 +164,24 @@ option, optgroup{
   text-decoration: underline;
 }
 
+.logo{
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img{
+  width: 100px;
+  height: 100px;
+}
+
+.wrapper img{
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
 .alert-danger {
   color: #721c24;
   background-color: #f8d7da;
@@ -172,6 +190,12 @@ option, optgroup{
   margin-bottom: 20px;
   border-radius: 5px;
   text-align: center;
+}
+
+.alert-success {
+color: #fff;
+background: none;
+border: none;  
 }
 
 .help-icon {
