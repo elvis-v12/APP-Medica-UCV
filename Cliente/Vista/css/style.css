@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: rgba(45, 52, 87, 0.9);
+  background: url('../img/fondo.png') no-repeat center center fixed;
   background-size: cover;
   background-position: center;
 }

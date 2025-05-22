@@ -242,7 +242,7 @@ session_start();
                 <div class="content">
                 <p>Hola, <strong>'. $fetch['nombre']. '</strong>!</p>
                 <p>Has solicitado restablecer tu contraseña. Haz clic en el botón para restablecerla:</p>
-                <a href="http://localhost/AppAlertaMedica/Servidor/Controlador/crestablecer_psw.php?token='. $token. '" class="button" style="color: #fff; text-decoration: none; font-size: 16px; font-weight: bold;">Restablecer Contraseña</a>
+                <a href="http://localhost:3000/Servidor/Controlador/crestablecer_psw.php?token='. $token. '" class="button" style="color: #fff; text-decoration: none; font-size: 16px; font-weight: bold;">Restablecer Contraseña</a>
                 <p>Si no has solicitado restablecer tu contraseña, ignora este correo electrónico.</p>
                 <p>Atentamente,</p>
                 <b>APP MÉDICA UCV</b>
