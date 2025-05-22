@@ -252,10 +252,14 @@ main.min-main {
 }
 
 .profile-header {
-  display: flex;
-  align-items: center;
-  gap: 20px;
   margin-bottom: 25px;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+}
+
+.profile-header p{
+  text-align: center;
 }
 
 .profile-card img {
