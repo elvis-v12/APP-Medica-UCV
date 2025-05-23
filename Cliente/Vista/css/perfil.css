@@ -330,10 +330,13 @@ form button[type="submit"] {
 }
 
 #editarPerfilBtn {
-  margin-left: 240px;
   background: var(--color-menu-hover);
   border: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 .table-responsive{
   width: 100%;
@@ -366,7 +369,10 @@ form button[type="submit"] {
   .menu {
     display: flex;
   }
-
+  .menu i:nth-child(2) {
+    display: none;
+  }
+  
   main {
     margin-left: 0;
     padding: 20px;
@@ -388,5 +394,8 @@ form button[type="submit"] {
 
   .profile-card {
     padding: 20px;
+  }
+  #editarPerfilBtn {
+  width: 100%;
   }
 }
