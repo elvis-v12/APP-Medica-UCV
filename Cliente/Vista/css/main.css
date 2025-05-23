@@ -327,7 +327,7 @@ form .col-md-6, form .col-12 {
 /* Responsive */
 @media (max-width: 768px) {
   .barra-lateral {
-    left: -260px;
+    left: -280px;
   }
 
   .max-barra-lateral {
