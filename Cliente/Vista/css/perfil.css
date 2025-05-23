@@ -149,6 +149,7 @@ ul {
     text-decoration: none;
     border-radius: 5px;
     color: #fff;
+    border-radius: 20px;
 }
 
 .barra-lateral .navegacion a:hover {
