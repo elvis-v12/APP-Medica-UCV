@@ -240,7 +240,7 @@ main.min-main {
 .profile-card {
   background-color: #f8f9fa;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 30px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   width: 100%;
   max-width: 700px;
@@ -249,6 +249,7 @@ main.min-main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 20px solid var(--color-barra-lateral);
 }
 
 .profile-header {
@@ -292,12 +293,25 @@ main.min-main {
 
 .table {
   color: #000;
+  --bs-table-bg: none;
+}
+
+.table>:not(caption)>*>*{
+  background-color: none;
+  border-bottom-width: none;
+  box-shadow: none;
 }
 
 #editarPerfilBtn,
 #cancelarEdicion,
 form button[type="submit"] {
   margin-top: 15px;
+}
+
+#editarPerfilBtn {
+  margin-left: 240px;
+  background: var(--color-menu-hover);
+  border: none;
 }
 
 .table-responsive{
