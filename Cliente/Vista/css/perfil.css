@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 :root{
-  --color-barra-lateral:rgb(141, 33, 33);
+  --color-barra-lateral:rgb(168, 40, 40);
 
   --color-texto:rgb(255, 255, 255);
   --color-texto-menu:rgb(255, 255, 255);
@@ -29,9 +29,9 @@ body{
   min-height: 100vh;
   background-size: cover;
   background-position: center;
+  background: #fff;
 }
 .container{
-  background: #fff;
   color: rgb(0, 0, 0);
   padding: 20px;
   min-height: 100%;
@@ -69,11 +69,13 @@ ul {
 .barra-lateral {
   width: 280px;
   height: 100%;
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
   background: var(--color-barra-lateral);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Versión minimizada */
@@ -82,7 +84,7 @@ ul {
 }
 
 .barra-lateral span {
-  font-size: 18px;
+  font-size: 15px;
   white-space: nowrap;
   transition: opacity 0.5s ease, width 0.5s ease;
 }
@@ -93,28 +95,45 @@ ul {
 }
 
 /* Nombre de la página */
-.barra-lateral .nombre-pagina {
-  height: 45px;
-  margin-bottom: 20px;
+.nombre-pagina {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  height: auto;
+  padding-top: 40px;
+  background: #861c1c;
 }
 
-.barra-lateral .nombre-pagina span {
+.nombre-pagina span {
   font-size: 25px;
   color: var(--color-texto);
   width: 100%;
   text-align: center;
 }
 
+.nombre-pagina img {
+  width: 130px;
+  height: 130px;
+  margin-right: 10px;
+}
+
+.nombre-pagina div{
+  border: 3px solid #684a4a;
+  width: 150px;
+  margin: 20px 0px ;
+}
+
 /* Navegación */
 .barra-lateral .navegacion {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 90%;
+  position: flex;
+  height: 100%;
+}
+
+.abajo{
+  margin-top: auto;
 }
 
 .barra-lateral .navegacion::-webkit-scrollbar {
@@ -141,15 +160,16 @@ ul {
 }
 
 .barra-lateral .navegacion a{
-    width: 100%;
     display: flex;
-    margin-bottom: 10px;
     align-items: center;
-    padding: 5px 5px;
+    padding: 15px 5px;
     text-decoration: none;
-    border-radius: 5px;
     color: #fff;
     border-radius: 20px;
+    margin: 10px;
+    border: 2px solid #861c1c;
+    background: #831919;
+    background-color: rgba(140, 117, 117, 0.15);
 }
 
 .barra-lateral .navegacion a:hover {
@@ -336,7 +356,7 @@ form button[type="submit"] {
 /* Responsive */
 @media (max-width: 768px) {
   .barra-lateral {
-    left: -260px;
+    left: -280px;
   }
 
   .max-barra-lateral {

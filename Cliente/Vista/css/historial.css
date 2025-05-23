@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 :root{
-  --color-barra-lateral:rgb(141, 33, 33);
+  --color-barra-lateral:rgb(168, 40, 40);
 
   --color-texto:rgb(255, 255, 255);
   --color-texto-menu:rgb(255, 255, 255);
@@ -29,16 +29,24 @@ body{
   min-height: 100vh;
   background-size: cover;
   background-position: center;
+  background: #fff;
 }
 .container{
-  background: #fff;
   color: rgb(0, 0, 0);
-  padding: 20px;
   max-width: 100%;
-  min-height: 100vh;
+  height: 100%;
+  border-radius: 20px;
+  padding: 0px 20px;
+  border: 2px solid #8f8686;
+  background: #f5f5f5;
+  box-shadow: 0 0 100px rgba(34, 33, 33, 0.356);
 }
-h1{
-  text-align: center;
+
+.container h1{
+  font-size: 30px;
+  font-weight: 600;
+  padding-top: 30px;
+  color: #8f8686;
 }
 
 ul {
@@ -67,11 +75,13 @@ ul {
 .barra-lateral {
   width: 280px;
   height: 100%;
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
   background: var(--color-barra-lateral);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Versión minimizada */
@@ -80,7 +90,7 @@ ul {
 }
 
 .barra-lateral span {
-  font-size: 18px;
+  font-size: 15px;
   white-space: nowrap;
   transition: opacity 0.5s ease, width 0.5s ease;
 }
@@ -91,28 +101,45 @@ ul {
 }
 
 /* Nombre de la página */
-.barra-lateral .nombre-pagina {
-  height: 45px;
-  margin-bottom: 20px;
+.nombre-pagina {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  height: auto;
+  padding-top: 40px;
+  background: #861c1c;
 }
 
-.barra-lateral .nombre-pagina span {
+.nombre-pagina span {
   font-size: 25px;
   color: var(--color-texto);
   width: 100%;
   text-align: center;
 }
 
+.nombre-pagina img {
+  width: 130px;
+  height: 130px;
+  margin-right: 10px;
+}
+
+.nombre-pagina div{
+  border: 3px solid #684a4a;
+  width: 150px;
+  margin: 20px 0px ;
+}
+
 /* Navegación */
 .barra-lateral .navegacion {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 90%;
+  position: flex;
+  height: 100%;
+}
+
+.abajo{
+  margin-top: auto;
 }
 
 .barra-lateral .navegacion::-webkit-scrollbar {
@@ -139,15 +166,16 @@ ul {
 }
 
 .barra-lateral .navegacion a{
-    width: 100%;
     display: flex;
-    margin-bottom: 10px;
     align-items: center;
-    padding: 5px 5px;
+    padding: 15px 5px;
     text-decoration: none;
-    border-radius: 5px;
     color: #fff;
     border-radius: 20px;
+    margin: 10px;
+    border: 2px solid #861c1c;
+    background: #831919;
+    background-color: rgba(140, 117, 117, 0.15);
 }
 
 .barra-lateral .navegacion a:hover {
@@ -160,7 +188,6 @@ ul {
   height: 30px;
   margin-right: 10px;
 }
-
 
 /* Dropdown */
 .sidebar-item .dropdown-toggle::after {
@@ -223,7 +250,7 @@ ul {
 
 
 main{
-  margin-left: 250px;
+  margin-left: 280px;
   padding: 20px;
   transition: margin-left 0.5s ease;
 }
@@ -231,109 +258,55 @@ main.min-main{
   margin-left: 80px;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 50px;
-  }
-
-.alertas-container {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .alertas-container li {
-    background-color: #f7f7f7;
-    padding: 16px;
-    margin-bottom: 16px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .alertas-container li:hover {
-    background-color: #eee;
-  }
-  
-  .data {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .descripcion {
-    font-size: 16px;
-    color: #666;
-  }
-  
-  .sintomas {
-    font-size: 14px;
-    color: #999;
-  }
-  
-  .estado {
-    font-size: 14px;
-    color: #666;
-    font-weight: bold;
-  }
-  
-  .estado::before {
-    content: "";
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: #ccc;
-    border-radius: 50%;
-    margin-right: 8px;
-  }
-  
-  .estado.Pendiente::before {
-    background-color: #ff9900;
-  }
-  
-  .estado.Resuelto::before {
-    background-color: #00cc00;
-  }
-
-  /* Estilos CSS para el contenido del modal */
-#modalBody {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
+table.table.table-striped {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1);
+    border-collapse: none;
 }
 
-.modal-title {
-  font-size: 24px;
-  margin-bottom: 15px;
+.table-striped tbody tr:hover {
+    background-color: #ffe5e5;
 }
 
-.modal-content {
-  padding: 20px;
+.btn.btn-danger{
+  background-color: #c75454fa;
+  color: #380505;
+  border-radius: 200px;
+  border: 3px solid #380505;
 }
 
-.modal-content p {
-  margin-bottom: 10px;
+.btn.btn-danger.cancelar-alerta,.btn.btn-danger.cancelar-alerta{
+  border-radius: 5px;
+  margin-left: 10px;
+  background-color: #991515;
+  padding: 8px 30px;
+  color: #fff;
+  border: none;
 }
 
-.modal-content strong {
-  font-weight: bold;
+.btn.btn-danger.cancelar-alerta:hover{
+  background-color: #c75454fa;
 }
 
-.modal-footer {
-  padding-top: 20px;
+.btn.btn-primary.editar-alerta,.ver-alerta{
+  background-color: #2edb62;
+  border: none;
+  padding: 8px 50px;
 }
 
-.btn-close {
-  color: #aaa;
-  cursor: pointer;
+.btn.btn-primary.editar-alerta{
+  background-color: blue;
+}
+
+.table>:not(caption)>*>*{
+  box-shadow: none;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .barra-lateral {
-    left: -260px;
+    left: -280px;
   }
 
   .max-barra-lateral {
