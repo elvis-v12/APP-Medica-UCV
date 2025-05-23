@@ -136,3 +136,58 @@ document.addEventListener("DOMContentLoaded", function() {
     // Cargar los usuarios cuando se cargue la página
     cargarUsuarios();
 });
+
+// ===================== BUSCAR Y PAGINAR (versión diseño-friendly) =====================
+let paginaActual = 1;
+let terminoBusqueda = "";
+
+// Búsqueda
+let debounceTimer;
+document.querySelector(".search-input").addEventListener("input", function () {
+    clearTimeout(debounceTimer);
+    terminoBusqueda = this.value.trim();
+    debounceTimer = setTimeout(() => {
+        paginaActual = 1;
+        cargarUsuariosConParametros();
+    }, 300); // espera 300ms tras dejar de escribir
+});
+
+// Paginación
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("pagination-button")) {
+        const texto = e.target.textContent.trim();
+        if (!isNaN(texto)) {
+            paginaActual = parseInt(texto);
+        } else if (e.target.querySelector("i.bx-chevron-right")) {
+            paginaActual++;
+        }
+        cargarUsuariosConParametros();
+    }
+});
+
+// Reusar lógica de carga
+function cargarUsuariosConParametros() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `../Controlador/cusuarios.php?pagina=${paginaActual}&buscar=${encodeURIComponent(terminoBusqueda)}`, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById("tabla-usuarios").innerHTML = xhr.responseText;
+
+            // 💡 Elimina paginación duplicada si existe
+           const paginacionExistente = document.getElementById("paginacion");
+            if (paginacionExistente) {
+                paginacionExistente.remove(); // limpia antes de renderizar nueva
+            }
+
+
+            document.querySelectorAll(".ver-usuario").forEach(btn =>
+                btn.addEventListener("click", () => verUsuario(btn.getAttribute("data-id")))
+            );
+            document.querySelectorAll(".editar-usuario").forEach(btn =>
+                btn.addEventListener("click", () => editarUsuario(btn.getAttribute("data-id")))
+            );
+        }
+    };
+    xhr.send();
+}
+

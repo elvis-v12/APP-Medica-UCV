@@ -10,53 +10,54 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div class="menu"></div>
-    <div class="barra-lateral">
-        <div>
-            <div class="nombre-pagina">
-                <span id="cloud">Menú</span>
-            </div>
-        </div>
-        <nav class="navegacion">
-            <div class="arriba">
-                <ul>
-                    <li>
-                        <a id="alerta" href="main.html">
-                            <img src="img/alert-triangle-svgrepo-com.svg" alt="alerta">
-                            <span>Alerta Médica</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a id="perfil" href="perfil.html">
-                            <img src="img/user-svgrepo-com.svg" alt="perfil">
-                            <span>Perfil</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item dropend">
-                        <a class="sidebar-link dropdown-toggle" href="#" role="button" id="registroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="img/folder-svgrepo-com.svg" alt="registro">
-                            <span>Registro de alertas</span>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="registroDropdown">
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" id="registro-emergencia" href="registro-emergencia.html">Registro de Emergencia</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" id="historial" href="historial.html">Historial</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="abajo">
-                <a href="../Controlador/cerrarSesion.php">
-                    <img src="img/logout-svgrepo-com.svg" alt="salir">
-                    <span>Cerrar Sesión</span>
-                </a>
-            </div>
-        </nav>
+    <div class="menu">
     </div>
-
+<div class="barra-lateral">
+            <div>
+                <div class="nombre-pagina">
+                    <img src="img/ucvdoc.ico" alt="logo">
+                    <span>CLIENTE</span>
+                    <div></div>
+                </div>
+            </div>
+            <nav class="navegacion">
+                <div class="arriba">
+                    <ul>
+                        <li>
+                            <a id="alerta" href="main.html">
+                                <img src="img/alert-triangle-svgrepo-com.ico" alt="alerta">
+                                <span>Alerta Médica</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="perfil" href="perfil.html">
+                                <img src="img/user-svgrepo-com.ico" alt="perfil">
+                                <span>Perfil</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" id="registro-emergencia" href="registro-emergencia.html">
+                                <img src="img/license-svgrepo-com.ico" alt="registro">
+                                <span>Registro de Emergencia</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" id="historial" href="historial.html">
+                                <img src="img/clock-svgrepo-com.ico" alt="historial">
+                                <span>Historial</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="abajo">
+                        <a href="../Controlador/cerrarSesion.php">
+                            <img src="img/logout-svgrepo-com.ico" alt="salir">
+                            <span>Cerrar Sesión</span>
+                        </a>
+                </div>
+            </nav>
+        </div>
+    
     <main>
         <div class="container">
             <div class="profile-card">
@@ -88,7 +89,6 @@
                     <button id="editarPerfilBtn" class="btn btn-primary">Editar</button>
                 </div>
             </div>
-
             <div class="profile-card" id="editarPerfil" style="display: none;">
                 <div class="profile-header">
                     <div class="profile-avatar">
@@ -167,7 +167,6 @@
             </div>
         </div>
     </main>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/perfil.js"></script>
