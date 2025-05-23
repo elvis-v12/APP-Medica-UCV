@@ -12,9 +12,50 @@ document.addEventListener("DOMContentLoaded", function() {
             mostrarModalConfirmacion(idAlerta);
         } else if (event.target.classList.contains('editar-alerta')) {
             var idAlerta = event.target.getAttribute('data-id-alerta');
-            // Implementar función para editar alerta
-            // Por ejemplo, redirigir a una página de edición
-            alert('Implementar función para editar alerta con ID: ' + idAlerta);
+
+            var modal = document.getElementById('modalBody');
+            var ubicacion = modal.querySelector('p:nth-child(2)').innerText.replace("Ubicación:", "").trim();
+            var piso = modal.querySelector('p:nth-child(3)')?.innerText.includes('Piso') ? modal.querySelector('p:nth-child(3)').innerText.replace("Piso:", "").trim() : '';
+            var especificacion = modal.querySelector('p:nth-child(4)').innerText.replace("Especificación:", "").trim();
+            var descripcion = modal.querySelector('p:nth-child(5)').innerText.replace("Descripción:", "").trim();
+            var sintomas = modal.querySelector('p:nth-child(6)').innerText.replace("Síntomas:", "").trim();
+            var notas = modal.querySelector('p:nth-child(7)')?.innerText.includes('Notas') ? modal.querySelector('p:nth-child(7)').innerText.replace("Notas:", "").trim() : '';
+
+            modal.innerHTML = `
+                <form id="formEditarAlerta">
+                    <input type="hidden" name="id_alerta" value="${idAlerta}">
+                    <input type="hidden" name="editar_alerta" value="1">
+                    <div class="mb-2"><label>Ubicación:</label><input class="form-control" name="ubicacion" value="${ubicacion}" required></div>
+                    <div class="mb-2"><label>Piso:</label><input class="form-control" name="piso" value="${piso}"></div>
+                    <div class="mb-2"><label>Especificación:</label><input class="form-control" name="especificacion" value="${especificacion}" required></div>
+                    <div class="mb-2"><label>Descripción:</label><textarea class="form-control" name="descripcion" required>${descripcion}</textarea></div>
+                    <div class="mb-2"><label>Síntomas:</label><textarea class="form-control" name="sintomas" required>${sintomas}</textarea></div>
+                    <div class="mb-2"><label>Notas:</label><textarea class="form-control" name="notas">${notas}</textarea></div>
+                    <div class="mt-3 text-end">
+                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            `;
+
+            document.getElementById("formEditarAlerta").addEventListener("submit", function (e) {
+                e.preventDefault();
+                const datos = new FormData(this);
+
+                fetch("../Controlador/r-emergencia.php", {
+                    method: "POST",
+                    body: datos
+                })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message);
+                    if (data.success) {
+                        cargarEmergencias();
+                        bootstrap.Modal.getInstance(document.getElementById("alertaModal")).hide();
+                    }
+                })
+                .catch(() => alert("Error al guardar los cambios."));
+            });
         }
     });
 
@@ -34,24 +75,14 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.open("GET", "../Controlador/r-emergencia.php?id_alerta=" + idAlerta, true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                // Obtener los detalles de la alerta desde la respuesta JSON
                 var detallesAlerta = JSON.parse(xhr.responseText);
-
-                // Formatear la fecha
                 var fecha = new Date(detallesAlerta.fecha);
                 var opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                 var fechaFormateada = fecha.toLocaleDateString('es-PE', opcionesFecha);
                 var horaFormateada = fecha.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' });
-                
-                // Aplicar ucfirst solo al primer carácter del día
-                fechaFormateada = fechaFormateada.replace(/^\w/, function(match) {
-                    return match.toUpperCase();
-                });
-                
-                // Obtener el color del estado
+                fechaFormateada = fechaFormateada.replace(/^\w/, match => match.toUpperCase());
                 var estadoColor = getEstadoColor(detallesAlerta.estado);
 
-                // Mostrar los detalles en el modal
                 document.getElementById('modalBody').innerHTML = `
                     <p><strong>ID de la Alerta:</strong> ${detallesAlerta.id_alerta}</p>
                     <p><strong>Ubicación:</strong> ${detallesAlerta.ubicacion}</p>
@@ -68,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     ` : ''}
                 `;
 
-                // Mostrar el modal
                 document.getElementById('alertaModal').classList.add('show');
                 document.body.classList.add('modal-open');
             }
@@ -92,17 +122,10 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                // Parsear la respuesta JSON
                 var respuesta = JSON.parse(xhr.responseText);
-    
-                // Actualizar el contenido del modal con el mensaje de respuesta
                 document.getElementById('mensajeModalTexto').textContent = respuesta.message;
-    
-                // Mostrar el modal
                 var mensajeModal = new bootstrap.Modal(document.getElementById('mensajeModal'));
                 mensajeModal.show();
-    
-                // Recargar las emergencias si la cancelación fue exitosa
                 if (respuesta.success) {
                     cargarEmergencias();
                 }
@@ -110,23 +133,18 @@ document.addEventListener("DOMContentLoaded", function() {
         };
         xhr.send("id_alerta=" + idAlerta + "&action=cancelar");
     }
-    
-    document.getElementById('mensajeModal').addEventListener('hidden.bs.modal', function (event) {
+
+    document.getElementById('mensajeModal').addEventListener('hidden.bs.modal', function () {
         cargarEmergencias();
     });
-    
+
     function getEstadoColor(estado) {
         switch (estado) {
-            case 'Pendiente':
-                return 'btn-danger btn-sm';
-            case 'En proceso':
-                return 'btn-warning btn-sm';
-            case 'Atendido':
-                return 'btn-success btn-sm';
-            case 'Cancelado':
-                return 'btn-secondary btn-sm';
-            default:
-                return 'btn-secondary btn-sm';
+            case 'Pendiente': return 'btn-danger btn-sm';
+            case 'En proceso': return 'btn-warning btn-sm';
+            case 'Atendido': return 'btn-success btn-sm';
+            case 'Cancelado': return 'btn-secondary btn-sm';
+            default: return 'btn-secondary btn-sm';
         }
     }
 });
