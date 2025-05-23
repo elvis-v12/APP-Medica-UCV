@@ -336,8 +336,11 @@ form .col-md-6, form .col-12 {
 
   .menu {
     display: flex;
-  }
 
+  }
+  .menu i:nth-child(2){
+    display: none;
+  }
   main {
     margin-left: 0;
     padding: 20px;

@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 menu.addEventListener("click",()=>{
   barraLateral.classList.toggle("max-barra-lateral");
+   if(menu.children.length >= 2 ){
   if(barraLateral.classList.contains("max-barra-lateral")){
       menu.children[0].style.display = "none";
       menu.children[1].style.display = "block";
@@ -31,6 +32,7 @@ menu.addEventListener("click",()=>{
       menu.children[0].style.display = "block";
       menu.children[1].style.display = "none";
   }
+}
   if(window.innerWidth<=320){
       barraLateral.classList.add("mini-barra-lateral");
       main.classList.add("min-main");

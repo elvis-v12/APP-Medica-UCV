@@ -375,7 +375,9 @@ form button[type="submit"] {
   main.min-main {
     margin-left: 0;
   }
-
+  .menu i:nth-child(2){
+    display: none;
+  }
   .profile-header {
     flex-direction: column;
     align-items: center;
@@ -389,4 +391,7 @@ form button[type="submit"] {
   .profile-card {
     padding: 20px;
   }
+  #editarPerfilBtn {
+  margin-left: 0px;
+}
 }

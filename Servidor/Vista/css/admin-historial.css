@@ -3,7 +3,7 @@
 :root {
   /* Mantenemos el color base de la barra lateral */
   --color-barra-lateral: #c8b2b2;
-  
+
   /* Nuevos colores y efectos */
   --color-texto: #2d2d2d;
   --color-texto-menu: #4a4a4a;
@@ -18,12 +18,20 @@
   --color-activo-glow: rgba(165, 142, 142, 0.4);
   --color-sombra: rgba(0, 0, 0, 0.1);
   --color-sombra-hover: rgba(0, 0, 0, 0.15);
-  
+
   /* Gradientes */
   --gradient-sidebar: linear-gradient(135deg, #c8b2b2 0%, #d4c0c0 100%);
   --gradient-active: linear-gradient(135deg, #a58e8e 0%, #b39c9c 100%);
   --gradient-hover: linear-gradient(135deg, #b39c9c 0%, #c8b2b2 100%);
   --gradient-header: linear-gradient(135deg, #8c7575 0%, #a58e8e 100%);
+
+  /* Nuevos colores para el contenido principal */
+  --color-fondo-principal: #f5f0ee;
+  --color-container-bg: rgba(165, 142, 142, 0.1);
+  --color-container-border: rgba(140, 117, 117, 0.2);
+  --color-table-bg: rgba(255, 255, 255, 0.9);
+  --color-table-header: linear-gradient(135deg, #a58e8e 0%, #b39c9c 100%);
+  --color-table-row-hover: rgba(200, 178, 178, 0.1);
 }
 
 * {
@@ -39,21 +47,50 @@ body {
   min-height: 100vh;
   background-size: cover;
   background-position: center;
+  background-color: var(--color-fondo-principal);
 }
 
 .container {
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  background: rgba(45, 60, 125, 0.9);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--color-container-border);
+  background: var(--color-container-bg);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  color: white;
-  padding: 20px;
+  color: var(--color-texto);
+  padding: 30px;
   max-width: 100%;
   min-height: 100vh;
 }
 
 h1 {
   text-align: center;
+  color: var(--color-boton);
+  margin-bottom: 20px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+  font-size: 28px;
+}
+
+h1:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-boton), transparent);
+  border-radius: 3px;
+}
+
+/* Estilo para la fecha - MOVIDO A LA DERECHA */
+.fecha-historial {
+  text-align: left;
+  color: var(--color-texto);
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-left: 25px; /* Aumentado para mover a la derecha */
+  font-weight: 500;
 }
 
 /*Menu*/
@@ -133,7 +170,7 @@ h1 {
 }
 
 .barra-lateral .nombre-pagina::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -143,7 +180,7 @@ h1 {
 }
 
 .barra-lateral .nombre-pagina::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -164,15 +201,13 @@ h1 {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 
-              0 0 0 5px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 0 5px rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
 
 .barra-lateral .nombre-pagina .admin-icon:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), 
-              0 0 0 8px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), 0 0 0 8px rgba(255, 255, 255, 0.15);
 }
 
 .barra-lateral .nombre-pagina span {
@@ -189,7 +224,7 @@ h1 {
 }
 
 .barra-lateral .nombre-pagina span::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -220,7 +255,7 @@ h1 {
 }
 
 .barra-lateral .navegacion li::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -261,7 +296,7 @@ h1 {
 }
 
 .barra-lateral .navegacion a::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -321,7 +356,7 @@ h1 {
 }
 
 .barra-lateral .navegacion a::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -359,7 +394,7 @@ h1 {
 }
 
 .cerrar-sesion-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -20px;
   left: 15px;
@@ -389,7 +424,7 @@ h1 {
 }
 
 .cerrar-sesion-container a::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -426,7 +461,7 @@ h1 {
 
 /* Efecto de ripple para cerrar sesión */
 .cerrar-sesion-container a::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -448,10 +483,240 @@ main {
   margin-left: 270px;
   padding: 20px;
   transition: margin-left 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background-color: var(--color-fondo-principal);
 }
 
 main.min-main {
   margin-left: 80px;
+}
+
+/* Estilos para la tabla de historial */
+.table-responsive {
+  margin-top: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: var(--color-table-bg);
+  border: 1px solid var(--color-container-border);
+  position: relative;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--color-texto);
+  table-layout: fixed; /* Añadido para control de columnas */
+}
+
+/* Definir anchos específicos para las columnas */
+table th:nth-child(1),
+table td:nth-child(1) {
+  width: 20%; /* Columna HORA */
+}
+
+table th:nth-child(2),
+table td:nth-child(2) {
+  width: 50%; /* Columna ESTADO */
+}
+
+table th:nth-child(3),
+table td:nth-child(3) {
+  width: 30%; /* Columna ACCIÓN */
+}
+
+table thead {
+  background: var(--color-table-header);
+}
+
+table th {
+  padding: 18px 15px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(140, 117, 117, 0.2);
+  position: relative;
+  color: white;
+}
+
+table th:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+table tbody tr {
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(140, 117, 117, 0.1);
+}
+
+table tbody tr:last-child {
+  border-bottom: none;
+}
+
+table tbody tr:hover {
+  background: var(--color-table-row-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+table td {
+  padding: 15px;
+  vertical-align: middle;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  color: var(--color-texto);
+  text-align: center;
+}
+
+/* Alineación específica para la primera columna (hora/fecha) */
+table td:first-child {
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Centrar botones de acción - MEJORADO */
+table td:last-child {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Asegurar que los botones estén perfectamente centrados */
+table td:last-child .ver-alerta,
+table td:last-child .btn-ver {
+  margin: 0 auto;
+  display: inline-block;
+}
+
+/* Estilos para los estados */
+.estado-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.estado-atendido,
+.btn-success {
+  background: rgba(40, 167, 69, 0.1) !important;
+  color: #28a745 !important;
+  border: 1px solid rgba(40, 167, 69, 0.3) !important;
+}
+
+.estado-pendiente,
+.btn-danger {
+  background: rgba(220, 53, 69, 0.1) !important;
+  color: #dc3545 !important;
+  border: 1px solid rgba(220, 53, 69, 0.3) !important;
+}
+
+.estado-proceso,
+.btn-warning {
+  background: rgba(255, 193, 7, 0.1) !important;
+  color: #ffc107 !important;
+  border: 1px solid rgba(255, 193, 7, 0.3) !important;
+}
+
+.estado-cancelado {
+  background: rgba(108, 117, 125, 0.1);
+  color: #6c757d;
+  border: 1px solid rgba(108, 117, 125, 0.3);
+}
+
+/* Estilos para los botones de acción */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn-action,
+.ver-alerta {
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.btn-action i,
+.ver-alerta i {
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+.btn-ver,
+.ver-alerta {
+  background: linear-gradient(135deg, #c8b2b2 0%, #d4c0c0 100%);
+  color: #4a3e3e;
+}
+
+.btn-ver:hover,
+.ver-alerta:hover {
+  background: linear-gradient(135deg, #d4c0c0 0%, #e0d0d0 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  color: #333333;
+}
+
+/* Estilos para el modal */
+.modal-content {
+  background: white;
+  border: 1px solid rgba(140, 117, 117, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  background: var(--color-table-header);
+  color: white;
+  border-bottom: none;
+  border-radius: 15px 15px 0 0;
+  padding: 20px 25px;
+}
+
+.modal-title {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.modal-body {
+  padding: 25px;
+  color: var(--color-texto);
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(140, 117, 117, 0.1);
+  padding: 20px 25px;
+}
+
+.btn-close {
+  color: white;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.btn-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
 }
 
 /* Estilos específicos para el historial */
@@ -461,92 +726,119 @@ main.min-main {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 15px;
 }
 
 .alertas-container li {
-  background-color: #f7f7f7;
-  padding: 16px;
-  margin-bottom: 16px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-table-bg);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-container-border);
 }
 
 .alertas-container li:hover {
-  background-color: #eee;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .data {
-  font-weight: bold;
-  color: #333;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin-bottom: 8px;
 }
 
 .descripcion {
-  font-size: 16px;
-  color: #666;
+  font-size: 15px;
+  color: var(--color-texto);
+  margin-bottom: 10px;
 }
 
 .sintomas {
   font-size: 14px;
-  color: #999;
+  color: #666;
+  margin-bottom: 10px;
+  font-style: italic;
 }
 
 .estado {
-  font-size: 14px;
-  color: #666;
-  font-weight: bold;
-}
-
-.estado::before {
-  content: "";
   display: inline-block;
-  width: 10px;
-  height: 10px;
-  background-color: #ccc;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.estado.Pendiente {
+  background: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+  border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.estado.Resuelto,
+.estado.Atendido {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+  border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.estado.Proceso,
+.estado.En.proceso {
+  background: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.estado.Cancelado {
+  background: rgba(108, 117, 125, 0.1);
+  color: #6c757d;
+  border: 1px solid rgba(108, 117, 125, 0.3);
+}
+
+/* Animación de carga */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(245, 240, 238, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(140, 117, 117, 0.1);
   border-radius: 50%;
-  margin-right: 8px;
+  border-top-color: #a58e8e;
+  animation: spin 1s ease-in-out infinite;
 }
 
-.estado.Pendiente::before {
-  background-color: #ff9900;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.estado.Resuelto::before {
-  background-color: #00cc00;
+/* Animación de entrada para el modal */
+.modal.fade .modal-dialog {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Estilos CSS para el contenido del modal */
-#modalBody {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
-}
-
-.modal-title {
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-
-.modal-content {
-  padding: 20px;
-}
-
-.modal-content p {
-  margin-bottom: 10px;
-}
-
-.modal-content strong {
-  font-weight: bold;
-}
-
-.modal-footer {
-  padding-top: 20px;
-}
-
-.btn-close {
-  color: #aaa;
-  cursor: pointer;
+.modal.show .modal-dialog {
+  transform: scale(1);
+  opacity: 1;
 }
 
 /*Responsive*/
@@ -554,12 +846,34 @@ main.min-main {
   .barra-lateral .nombre-pagina {
     padding: 15px;
   }
-  
+
   .barra-lateral .nombre-pagina .admin-icon {
     width: 50px;
     height: 50px;
     font-size: 30px;
     margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-responsive {
+    margin-top: 20px;
+  }
+
+  table th,
+  table td {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+
+  .btn-action {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .estado-badge {
+    padding: 4px 8px;
+    font-size: 11px;
   }
 }
 
@@ -583,39 +897,62 @@ main.min-main {
   main.min-main {
     margin-left: 0;
   }
-}
 
-@media screen and (max-width: 600px) {
   .table-responsive {
-    display: block;
     overflow-x: auto;
   }
 
   .table-responsive table {
     width: 100%;
+    min-width: 600px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .action-buttons {
+    flex-direction: column;
+    gap: 5px;
   }
 
-  .table-responsive thead {
-    display: none;
+  .btn-action {
+    width: 100%;
   }
 
-  .table-responsive tr {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
+  h1 {
+    font-size: 24px;
   }
+}
 
-  .table-responsive th,
-  .table-responsive td,
-  .table-responsive tr {
-    flex: 1 1 50%;
-    padding: 5px;
-    box-sizing: border-box;
-  }
+/* Mejorar espaciado de secciones - MOVIDO A LA DERECHA */
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-boton);
+  margin: 30px 0 15px 0;
+  padding-left: 25px; /* Aumentado para mover a la derecha */
+}
 
-  .table-responsive th {
-    font-weight: bold;
-  }
+/* Mejorar espaciado entre tablas */
+.table-responsive + .section-title {
+  margin-top: 40px;
+}
+
+/* Estilos específicos para elementos que aparecen en el HTML generado dinámicamente */
+/* Esto asegura que cualquier texto que aparezca fuera de las tablas esté bien posicionado */
+.container > p,
+.container > div:not(.table-responsive) {
+  padding-left: 25px;
+  margin-bottom: 15px;
+}
+
+/* Estilo específico para "Alertas Canceladas" y fechas */
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-left: 25px;
+  color: var(--color-boton);
+  font-weight: 600;
+  margin: 25px 0 15px 0;
 }

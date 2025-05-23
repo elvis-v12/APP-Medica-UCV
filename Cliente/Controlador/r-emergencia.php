@@ -37,6 +37,42 @@ try {
         exit; // Salir para no continuar con el resto del código
     }
 
+    //Editar alerta
+    if (isset($_POST['editar_alerta']) && $_POST['editar_alerta'] == '1' && isset($_POST['id_alerta'])) {
+        $id_alerta = $_POST['id_alerta'];
+        $ubicacion = $_POST['ubicacion'];
+        $piso = $_POST['piso'];
+        $especificacion = $_POST['especificacion'];
+        $descripcion = $_POST['descripcion'];
+        $sintomas = $_POST['sintomas'];
+        $notas = $_POST['notas'];
+
+        $sql_editar = "UPDATE alertas 
+                       SET ubicacion = :ubicacion,
+                           piso = :piso,
+                           especificacion = :especificacion,
+                           descripcion = :descripcion,
+                           sintomas = :sintomas,
+                           notas = :notas
+                       WHERE id_alerta = :id_alerta";
+        $stmt_editar = $db->prepare($sql_editar);
+        $stmt_editar->bindParam(':ubicacion', $ubicacion);
+        $stmt_editar->bindParam(':piso', $piso);
+        $stmt_editar->bindParam(':especificacion', $especificacion);
+        $stmt_editar->bindParam(':descripcion', $descripcion);
+        $stmt_editar->bindParam(':sintomas', $sintomas);
+        $stmt_editar->bindParam(':notas', $notas);
+        $stmt_editar->bindParam(':id_alerta', $id_alerta, PDO::PARAM_INT);
+
+        if ($stmt_editar->execute()) {
+            echo json_encode(['success' => true, 'message' => 'La alerta ha sido actualizada correctamente.']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Error al actualizar la alerta.']);
+        }
+        exit;
+    }
+
+
     // Si se recibe una solicitud POST para cancelar una alerta
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_alerta'])) {
         $id_alerta = $_POST['id_alerta'];
