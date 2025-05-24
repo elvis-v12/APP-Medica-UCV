@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bienvenido a AppMedicaUCV</title>
   <link rel="icon" type="image/x-icon" href="Cliente/Vista/img/ucvdoc.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
+    * {
       margin: 0;
-      background: url('Cliente/Vista/img/fondo.webp') no-repeat center center fixed;
-      background-size: cover;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      background: url('Cliente/Vista/img/fondo.webp') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
     }
 
     .overlay {
@@ -29,46 +34,49 @@
       z-index: 0;
     }
 
-    .contenido {
+    .wrapper {
       position: relative;
       z-index: 1;
-    }
-
-    .card {
+      width: 100%;
+      max-width: 400px;
+      margin: 20px;
       background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 20px;
+      padding: 40px 30px;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      padding: 40px;
-      width: 90%;
-      max-width: 400px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+      color: #fff;
       text-align: center;
-      color: #ffffff;
     }
 
     .logo {
-      width: 170px;
-      height: 170px;
-      margin-bottom: 2px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 120px;
+      height: 120px;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 24px;
       margin-bottom: 10px;
-      color: #ffffff;
+      color: #fff;
     }
 
     p {
       font-size: 16px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+      color: #fff;
     }
 
     .btn {
       display: block;
       width: 100%;
-      margin-bottom: 15px;
       padding: 12px 0;
       font-weight: 600;
       font-size: 16px;
@@ -78,23 +86,44 @@
       border-radius: 30px;
       text-decoration: none;
       transition: background-color 0.3s ease;
+      margin-bottom: 15px;
     }
 
     .btn:hover {
       background-color: #e0e0e0;
     }
+
+    @media (max-width: 480px) {
+      .wrapper {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .btn {
+        font-size: 14px;
+        padding: 10px 0;
+      }
+
+      .logo img {
+        width: 100px;
+        height: 100px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
-  <div class="contenido">
-    <div class="card">
-      <img src="Cliente/Vista/img/ucvdoc.ico" alt="Logo UCV" class="logo">
-      <h1>Bienvenido a AppMedicaUCV</h1>
-      <p>¿Cómo deseas ingresar?</p>
-      <a class="btn" href="/Cliente/Vista/index.html">CLIENTE</a>
-      <a class="btn" href="Servidor/Vista/sadmin-login.html">SERVIDOR</a>
+  <div class="wrapper">
+    <div class="logo">
+      <img src="Cliente/Vista/img/ucvdoc.ico" alt="Logo UCV">
     </div>
+    <h1>Bienvenido a AppMedicaUCV</h1>
+    <p>¿Cómo deseas ingresar?</p>
+    <a class="btn" href="/Cliente/Vista/index.html">CLIENTE</a>
+    <a class="btn" href="Servidor/Vista/sadmin-login.html">SERVIDOR</a>
   </div>
 </body>
 </html>
