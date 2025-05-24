@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenido a AppMedicaUCV</title>
+  <link rel="icon" type="image/x-icon" href="Cliente/Vista/img/ucvdoc.ico">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 80px;
+      background: url('Cliente/Vista/img/fondo.webp') no-repeat center center fixed;
+      background-size: cover;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .btn {
+      display: inline-block;
+      margin: 20px;
+      padding: 20px 40px;
+      font-size: 1.2em;
+      color: #fff;
+      background: #3498db;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #2980b9;
+    }
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 30px;
+    }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 40, 0.5);
+      z-index: 1;
+    }
+    .contenido {
+      position: relative;
+      z-index: 2;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 40px 30px 30px 30px;
+      max-width: 450px;
+      margin: 60px auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="contenido">
+    <div class="card">
+      <img src="Cliente/Vista/img/ucvdoc.ico" alt="Logo UCV" class="logo">
+      <h1>Bienvenido a AppMedicaUCV</h1>
+      <p>¿Cómo deseas ingresar?</p>
+      <a class="btn" href="/Cliente/Vista/index.html">Entrar como Cliente</a>
+      <a class="btn" href="Servidor/Vista/sadmin-login.html">Entrar como Servidor</a>
+    </div>
+  </div>
+</body>
+</html> 
