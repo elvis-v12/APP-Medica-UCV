@@ -173,7 +173,7 @@ function cargarUsuariosConParametros() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             document.getElementById("tabla-usuarios").innerHTML = xhr.responseText;
 
-            // 💡 Elimina paginación duplicada si existe
+            // Elimina paginación duplicada si existe
            const paginacionExistente = document.getElementById("paginacion");
             if (paginacionExistente) {
                 paginacionExistente.remove(); // limpia antes de renderizar nueva

@@ -12,10 +12,10 @@ header('Content-Type: application/json');
 
 include "../../Cliente/Modelo/conexion.php";
 
-// 🔍 Para depuración
+//  Para depuración
 file_put_contents("debug_sesion.txt", json_encode($_SESSION));
 
-// 👉 Alternativa: autenticación por token en encabezado
+// Alternativa: autenticación por token en encabezado
 $authHeader = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
 if (str_starts_with($authHeader, 'Bearer ')) {
     $token = str_replace('Bearer ', '', $authHeader);
@@ -33,7 +33,7 @@ $id_usuario = $_SESSION['usuario_id'];
 
 try {
     // ----------------------------
-    // 🚀 MÉTODO GET - Cargar perfil
+    // MÉTODO GET - Cargar perfil
     // ----------------------------
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
         $stmt = $db->prepare("SELECT nombre, apellido_paterno, apellido_materno, telefono, correo_institucional, carrera, img_perfil FROM usuarios WHERE id_usuario = :id");
@@ -46,7 +46,7 @@ try {
     }
 
     // ----------------------------
-    // ✏️ MÉTODO POST - Actualizar perfil
+    // MÉTODO POST - Actualizar perfil
     // ----------------------------
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $nombre = $_POST['nombre'] ?? '';

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const result = await response.json();
 
             if (result.success) {
-                // ✅ Guarda el token en localStorage
+                // Guarda el token en localStorage
                 if (result.token) {
                     localStorage.setItem('token', result.token);
                 }
